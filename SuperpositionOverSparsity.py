@@ -7,8 +7,8 @@ torch.manual_seed(1)
 
 DATA_SIZE = 80
 MODEL_SIZE = 20
-DATA_SPARSITIES = [0.9**(2*i) for i in range(10)]
-DATA_IMPORTANCE_DECAY = 0.9
+DATA_SPARSITIES = [0.88**(i) for i in range(25)]
+DATA_IMPORTANCE_DECAY = 1.0 # This means there is no decay, i.e. all features are equally important
 
 LEARNING_RATE = 0.001
 DECAY_PER_EPOCH = 0.99995
@@ -93,6 +93,6 @@ for sparsity in DATA_SPARSITIES:
     plt.yscale("log")
     plt.show()
 
-plt.plot(DATA_SPARSITIES, dims_per_feature)
+plt.plot([1/i for i in DATA_SPARSITIES], dims_per_feature)
 plt.xscale("log")
 plt.show()
